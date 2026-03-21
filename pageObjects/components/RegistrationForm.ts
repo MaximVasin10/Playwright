@@ -1,5 +1,5 @@
 import { Page, Locator } from '@playwright/test';
-import { BasePageComponent } from '../base.pageComponent';
+import { BasePageComponent } from '../BasepageComponent';
 
 export class RegistrationForm extends BasePageComponent {
 
