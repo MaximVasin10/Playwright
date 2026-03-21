@@ -1,8 +1,8 @@
 import { test as base } from '@playwright/test';
-import { HomePage } from '../pageObjects/pages/homepage';
-import { Header } from '../pageObjects/components/header';
-import { LoginForm } from '../pageObjects/components/loginForm';
-import { RegistrationForm } from '../pageObjects/components/registrationForm';
+import { HomePage } from '../pageObjects/pages/Homepage';
+import { Header } from '../pageObjects/components/Header';
+import { LoginForm } from '../pageObjects/components/LoginForm';
+import { RegistrationForm } from '../pageObjects/components/RegistrationForm';
 
 // 1. Define types for all your Page Objects and Components
 type MyPageObjects = {
