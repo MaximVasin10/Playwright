@@ -13,17 +13,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [
-    ['list'],
-    [
-      '@testomatio/reporter/lib/adapter/playwright.js',
-      {
-        apiKey: process.env.TESTOMATIO,
-        uploadArtifacts: true,
-      },
-    ],
-  ],
-
+  reporter: 'html',
 
   use: {
     baseURL: process.env.BASE_URL,
@@ -41,9 +31,22 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    { name: 'setup', testMatch: /.*setup\.ts/ },
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'postlogin',
+      testMatch: '**/postlogin/**/*.spec.ts',
+      dependencies: ['setup'],
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: 'testData/auth.json',
+      },
+    },
+    {
+      name: 'prelogin',
+      testMatch: '**/prelogin/**/*.spec.ts',
+      use: {
+        ...devices['Desktop Chrome'],
+      },
     },
   ],
 });
