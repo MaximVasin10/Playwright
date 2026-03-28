@@ -3,6 +3,10 @@ import { HomePage } from '../pageObjects/pages/Homepage';
 import { Header } from '../pageObjects/components/Header';
 import { LoginForm } from '../pageObjects/components/LoginForm';
 import { RegistrationForm } from '../pageObjects/components/RegistrationForm';
+import { Garage } from '../pageObjects/pages/Garage';
+import { AddCarModal } from '../pageObjects/components/AddCarModal';
+import { AddExpenseModal } from '../pageObjects/components/AddExpenseModal';
+import { FuelExpenses } from '../pageObjects/pages/FuelExpenses';
 
 // 1. Define types for all your Page Objects and Components
 type MyPageObjects = {
@@ -10,6 +14,10 @@ type MyPageObjects = {
     header: Header;
     loginForm: LoginForm;
     registrationForm: RegistrationForm;
+    garage: Garage;
+    addCarModal: AddCarModal;
+    addExpenseModal: AddExpenseModal;
+    fuelExpenses: FuelExpenses;
 };
 
 // 2. Extend the base test with your objects
@@ -25,7 +33,19 @@ export const test = base.extend<MyPageObjects>({
     },
     registrationForm: async ({ page }, use) => {
         await use(new RegistrationForm(page));
-    }
+    },
+    garage: async ({ page }, use) => {
+        await use(new Garage(page));
+    },
+    addCarModal: async ({ page }, use) => {
+        await use(new AddCarModal(page));
+    },
+    addExpenseModal: async ({ page }, use) => {
+        await use(new AddExpenseModal(page));
+    },
+    fuelExpenses: async ({ page }, use) => {
+        await use(new FuelExpenses(page));
+    },
 });
 
 export { expect } from '@playwright/test';
