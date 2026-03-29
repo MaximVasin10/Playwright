@@ -4,8 +4,10 @@ import { faker } from '@faker-js/faker';
 
 test.describe('Garage: basic checks', () => {
 
-    test.beforeEach(async ({ homePage }) => {
+    test.beforeEach(async ({ page, homePage, apiController }) => {
+        await apiController.cleanupCars();
         await homePage.open();
+        await page.reload();
     });
 
     test.afterAll(async ({ request }) => {
