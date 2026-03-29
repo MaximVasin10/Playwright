@@ -7,6 +7,8 @@ import { Garage } from '../pageObjects/pages/Garage';
 import { AddCarModal } from '../pageObjects/components/AddCarModal';
 import { AddExpenseModal } from '../pageObjects/components/AddExpenseModal';
 import { FuelExpenses } from '../pageObjects/pages/FuelExpenses';
+import { Profile } from '../pageObjects/pages/Profile';
+import { ApiController } from '../api-controllers/ApiController';
 
 // 1. Define types for all your Page Objects and Components
 type MyPageObjects = {
@@ -18,6 +20,8 @@ type MyPageObjects = {
     addCarModal: AddCarModal;
     addExpenseModal: AddExpenseModal;
     fuelExpenses: FuelExpenses;
+    profile: Profile;
+    apiController: ApiController;
 };
 
 // 2. Extend the base test with your objects
@@ -46,6 +50,13 @@ export const test = base.extend<MyPageObjects>({
     fuelExpenses: async ({ page }, use) => {
         await use(new FuelExpenses(page));
     },
+    profile: async ({ page }, use) => {
+        await use(new Profile(page));
+    },
+    apiController: async ({ request }, use) => {
+        await use(new ApiController(request));
+    },
+
 });
 
 export { expect } from '@playwright/test';

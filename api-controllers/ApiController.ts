@@ -37,4 +37,18 @@ export class ApiController {
         });
         return response;
     }
+
+    async getUserCars() {
+        return await this.request.get('/api/cars');
+    }
+
+    async updateCar(carId: number, brandId: number, modelId: number, mileage: number) {
+        return await this.request.put(`/api/cars/${carId}`, {
+            data: { carBrandId: brandId, carModelId: modelId, mileage: mileage }
+        });
+    }
+
+    async deleteCar(carId: number) {
+        return await this.request.delete(`/api/cars/${carId}`);
+    }
 }
