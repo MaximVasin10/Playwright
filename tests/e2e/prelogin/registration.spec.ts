@@ -1,5 +1,5 @@
 import { test, expect } from '../../../fixtures/PageFixture';
-import { VALIDATION_MESSAGES } from '../../../testData/ValidationMessages';
+import { VALIDATION_MESSAGES } from '../../../testData/validationMessages';
 import { faker } from '@faker-js/faker';
 
 const ERROR_RED = 'rgb(220, 53, 69)';
