@@ -19,8 +19,8 @@ jobs:
       - name: Run tests in Docker
         run: |
           echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env
-          echo "USER_EMAIL=${{ secrets.HTTP_PASSWORD }}" >> .env
-          echo "USER_PASSWORD=${{ secrets.HTTP_USER }}" >> .env
+          echo "HTTP_PASSWORD=${{ secrets.HTTP_PASSWORD }}" >> .env
+          echo "HTTP_USER=${{ secrets.HTTP_USER }}" >> .env
           echo "CUSTOMER_EMAIL=${{ secrets.CUSTOMER_EMAIL }}" >> .env
           echo "CUSTOMER_PASSWORD=${{ secrets.CUSTOMER_PASSWORD }}" >> .env
 
